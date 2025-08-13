@@ -1,0 +1,101 @@
+ID,Age,Gender,State,District,Urban_Rural,Education,Occupation,Income_Bracket,Employment_Status,Family_Size,Housing_Type,Religion,Caste_Category
+1,34,Male,Maharashtra,Mumbai,Urban,Graduate,Software Engineer,50000-75000,Employed,4,Apartment,Hindu,General
+2,28,Female,Karnataka,Bangalore,Urban,Post Graduate,Doctor,75000-100000,Employed,3,Independent House,Hindu,General
+3,45,Male,Tamil Nadu,Chennai,Urban,Higher Secondary,Business Owner,100000-150000,Self Employed,5,Independent House,Hindu,OBC
+4,52,Female,Delhi,New Delhi,Urban,Graduate,Government Officer,75000-100000,Employed,3,Apartment,Sikh,General
+5,29,Male,Gujarat,Ahmedabad,Urban,Graduate,Marketing Manager,50000-75000,Employed,4,Apartment,Hindu,General
+6,38,Female,West Bengal,Kolkata,Urban,Higher Secondary,Teacher,25000-50000,Employed,4,Apartment,Hindu,General
+7,41,Male,Rajasthan,Jaipur,Urban,Graduate,Bank Manager,75000-100000,Employed,5,Independent House,Hindu,General
+8,33,Female,Uttar Pradesh,Lucknow,Urban,Graduate,Nurse,25000-50000,Employed,3,Apartment,Hindu,OBC
+9,47,Male,Punjab,Ludhiana,Urban,Higher Secondary,Farmer,25000-50000,Self Employed,6,Independent House,Sikh,General
+10,26,Female,Haryana,Gurgaon,Urban,Post Graduate,Consultant,75000-100000,Employed,2,Apartment,Hindu,General
+11,55,Male,Madhya Pradesh,Bhopal,Urban,Primary,Shopkeeper,15000-25000,Self Employed,5,Independent House,Hindu,OBC
+12,31,Female,Odisha,Bhubaneswar,Urban,Graduate,IT Professional,50000-75000,Employed,3,Apartment,Hindu,General
+13,39,Male,Kerala,Kochi,Urban,Graduate,Accountant,50000-75000,Employed,4,Independent House,Christian,General
+14,44,Female,Andhra Pradesh,Hyderabad,Urban,Higher Secondary,Housewife,0-15000,Unemployed,4,Apartment,Hindu,OBC
+15,36,Male,Telangana,Hyderabad,Urban,Graduate,Sales Manager,50000-75000,Employed,4,Apartment,Hindu,SC
+16,42,Female,Bihar,Patna,Urban,Higher Secondary,Teacher,25000-50000,Employed,5,Independent House,Hindu,OBC
+17,30,Male,Jharkhand,Ranchi,Urban,Graduate,Engineer,50000-75000,Employed,3,Apartment,Hindu,ST
+18,48,Female,Assam,Guwahati,Urban,Primary,Domestic Worker,15000-25000,Employed,6,Independent House,Hindu,OBC
+19,35,Male,Tripura,Agartala,Urban,Higher Secondary,Police Officer,50000-75000,Employed,4,Independent House,Hindu,General
+20,27,Female,Manipur,Imphal,Urban,Graduate,Journalist,25000-50000,Employed,3,Apartment,Hindu,General
+21,53,Male,Nagaland,Kohima,Urban,Higher Secondary,Government Employee,50000-75000,Employed,5,Independent House,Christian,ST
+22,32,Female,Mizoram,Aizawl,Urban,Graduate,Social Worker,25000-50000,Employed,4,Independent House,Christian,ST
+23,40,Male,Arunachal Pradesh,Itanagar,Urban,Graduate,Forest Officer,50000-75000,Employed,4,Independent House,Hindu,ST
+24,37,Female,Sikkim,Gangtok,Urban,Higher Secondary,Shopkeeper,25000-50000,Self Employed,3,Independent House,Hindu,General
+25,46,Male,Himachal Pradesh,Shimla,Urban,Graduate,Tourism Officer,50000-75000,Employed,4,Independent House,Hindu,General
+26,29,Female,Uttarakhand,Dehradun,Urban,Graduate,Teacher,25000-50000,Employed,3,Apartment,Hindu,General
+27,51,Male,Jammu and Kashmir,Srinagar,Urban,Higher Secondary,Handicraft Worker,15000-25000,Self Employed,6,Independent House,Muslim,General
+28,33,Female,Ladakh,Leh,Urban,Graduate,Government Officer,50000-75000,Employed,3,Independent House,Buddhist,ST
+29,38,Male,Goa,Panaji,Urban,Graduate,Hotel Manager,75000-100000,Employed,3,Independent House,Christian,General
+30,43,Female,Puducherry,Puducherry,Urban,Higher Secondary,Nurse,25000-50000,Employed,4,Apartment,Hindu,OBC
+31,25,Male,Maharashtra,Pune,Urban,Graduate,Software Developer,50000-75000,Employed,2,Apartment,Hindu,General
+32,56,Female,Karnataka,Mysore,Urban,Primary,Domestic Worker,15000-25000,Employed,5,Independent House,Hindu,OBC
+33,41,Male,Tamil Nadu,Coimbatore,Urban,Graduate,Factory Manager,75000-100000,Employed,4,Independent House,Hindu,OBC
+34,34,Female,Delhi,South Delhi,Urban,Post Graduate,Lawyer,100000-150000,Employed,3,Apartment,Hindu,General
+35,49,Male,Gujarat,Surat,Urban,Higher Secondary,Textile Worker,25000-50000,Employed,5,Independent House,Hindu,OBC
+36,28,Female,West Bengal,Howrah,Urban,Graduate,Bank Employee,50000-75000,Employed,3,Apartment,Hindu,General
+37,52,Male,Rajasthan,Udaipur,Urban,Primary,Auto Driver,15000-25000,Self Employed,6,Independent House,Hindu,OBC
+38,31,Female,Uttar Pradesh,Kanpur,Urban,Higher Secondary,Tailor,15000-25000,Self Employed,4,Independent House,Hindu,OBC
+39,45,Male,Punjab,Amritsar,Urban,Graduate,Government Teacher,50000-75000,Employed,5,Independent House,Sikh,General
+40,37,Female,Haryana,Faridabad,Urban,Graduate,HR Manager,75000-100000,Employed,3,Apartment,Hindu,General
+41,24,Male,Madhya Pradesh,Indore,Urban,Graduate,Marketing Executive,25000-50000,Employed,3,Apartment,Hindu,General
+42,58,Female,Odisha,Cuttack,Urban,Primary,Vegetable Vendor,15000-25000,Self Employed,4,Independent House,Hindu,OBC
+43,36,Male,Kerala,Thiruvananthapuram,Urban,Graduate,Government Officer,50000-75000,Employed,4,Independent House,Christian,General
+44,42,Female,Andhra Pradesh,Vijayawada,Urban,Higher Secondary,Housewife,0-15000,Unemployed,5,Independent House,Hindu,OBC
+45,39,Male,Telangana,Warangal,Urban,Graduate,Police Inspector,75000-100000,Employed,4,Independent House,Hindu,SC
+46,47,Female,Bihar,Gaya,Urban,Primary,Domestic Worker,15000-25000,Employed,6,Independent House,Hindu,SC
+47,33,Male,Jharkhand,Jamshedpur,Urban,Graduate,Steel Plant Engineer,75000-100000,Employed,3,Apartment,Hindu,General
+48,50,Female,Assam,Silchar,Urban,Higher Secondary,Teacher,25000-50000,Employed,5,Independent House,Hindu,General
+49,35,Male,Tripura,Udaipur,Urban,Higher Secondary,Government Clerk,25000-50000,Employed,4,Independent House,Hindu,General
+50,29,Female,Manipur,Thoubal,Urban,Graduate,Doctor,75000-100000,Employed,3,Independent House,Hindu,General
+51,62,Male,Maharashtra,Nagpur,Rural,Primary,Farmer,15000-25000,Self Employed,7,Kutcha House,Hindu,OBC
+52,35,Female,Karnataka,Gulbarga,Rural,Higher Secondary,Anganwadi Worker,15000-25000,Employed,5,Pucca House,Hindu,SC
+53,48,Male,Tamil Nadu,Salem,Rural,Higher Secondary,Agricultural Laborer,15000-25000,Employed,6,Semi-Pucca House,Hindu,OBC
+54,41,Female,Delhi,Outer Delhi,Rural,Primary,Domestic Worker,15000-25000,Employed,5,Semi-Pucca House,Hindu,SC
+55,57,Male,Gujarat,Rajkot,Rural,Primary,Cattle Farmer,25000-50000,Self Employed,8,Pucca House,Hindu,OBC
+56,32,Female,West Bengal,Murshidabad,Rural,Higher Secondary,School Teacher,25000-50000,Employed,4,Pucca House,Hindu,General
+57,44,Male,Rajasthan,Jodhpur,Rural,Primary,Agricultural Laborer,15000-25000,Employed,7,Kutcha House,Hindu,OBC
+58,38,Female,Uttar Pradesh,Varanasi,Rural,Primary,Housewife,0-15000,Unemployed,6,Semi-Pucca House,Hindu,OBC
+59,53,Male,Punjab,Patiala,Rural,Higher Secondary,Farmer,50000-75000,Self Employed,6,Pucca House,Sikh,General
+60,29,Female,Haryana,Hisar,Rural,Graduate,Government Teacher,50000-75000,Employed,4,Pucca House,Hindu,General
+61,46,Male,Madhya Pradesh,Gwalior,Rural,Primary,Agricultural Laborer,15000-25000,Employed,7,Kutcha House,Hindu,SC
+62,34,Female,Odisha,Puri,Rural,Higher Secondary,Self Help Group Leader,15000-25000,Self Employed,5,Semi-Pucca House,Hindu,OBC
+63,51,Male,Kerala,Palakkad,Rural,Higher Secondary,Rubber Tapper,25000-50000,Self Employed,5,Pucca House,Hindu,OBC
+64,39,Female,Andhra Pradesh,Guntur,Rural,Primary,Agricultural Laborer,15000-25000,Employed,6,Semi-Pucca House,Hindu,SC
+65,42,Male,Telangana,Karimnagar,Rural,Higher Secondary,Farmer,25000-50000,Self Employed,5,Pucca House,Hindu,OBC
+66,55,Female,Bihar,Muzaffarpur,Rural,Primary,Domestic Worker,15000-25000,Employed,8,Kutcha House,Hindu,SC
+67,37,Male,Jharkhand,Dhanbad,Rural,Higher Secondary,Coal Miner,25000-50000,Employed,5,Semi-Pucca House,Hindu,ST
+68,43,Female,Assam,Jorhat,Rural,Primary,Tea Garden Worker,15000-25000,Employed,6,Kutcha House,Hindu,OBC
+69,49,Male,Tripura,Dhalai,Rural,Higher Secondary,Government Employee,25000-50000,Employed,5,Pucca House,Hindu,General
+70,31,Female,Manipur,Bishnupur,Rural,Graduate,Health Worker,25000-50000,Employed,4,Pucca House,Hindu,General
+71,58,Male,Nagaland,Dimapur,Rural,Primary,Farmer,15000-25000,Self Employed,7,Semi-Pucca House,Christian,ST
+72,36,Female,Mizoram,Lunglei,Rural,Higher Secondary,Weaver,15000-25000,Self Employed,5,Pucca House,Christian,ST
+73,47,Male,Arunachal Pradesh,Papum Pare,Rural,Higher Secondary,Forest Guard,25000-50000,Employed,6,Pucca House,Hindu,ST
+74,33,Female,Sikkim,South Sikkim,Rural,Graduate,Government Officer,50000-75000,Employed,4,Pucca House,Hindu,General
+75,52,Male,Himachal Pradesh,Kullu,Rural,Higher Secondary,Apple Farmer,25000-50000,Self Employed,5,Pucca House,Hindu,General
+76,28,Female,Uttarakhand,Haridwar,Rural,Graduate,Government Teacher,50000-75000,Employed,3,Pucca House,Hindu,General
+77,61,Male,Jammu and Kashmir,Baramulla,Rural,Primary,Farmer,15000-25000,Self Employed,8,Semi-Pucca House,Muslim,General
+78,40,Female,Ladakh,Kargil,Rural,Higher Secondary,Government Employee,25000-50000,Employed,5,Pucca House,Muslim,General
+79,45,Male,Goa,South Goa,Rural,Higher Secondary,Fisherman,25000-50000,Self Employed,4,Pucca House,Hindu,OBC
+80,37,Female,Puducherry,Karaikal,Rural,Primary,Agricultural Laborer,15000-25000,Employed,5,Semi-Pucca House,Hindu,OBC
+81,26,Male,Maharashtra,Solapur,Rural,Graduate,Agricultural Extension Officer,50000-75000,Employed,4,Pucca House,Hindu,General
+82,54,Female,Karnataka,Bijapur,Rural,Primary,Agricultural Laborer,15000-25000,Employed,7,Kutcha House,Hindu,SC
+83,41,Male,Tamil Nadu,Thanjavur,Rural,Higher Secondary,Rice Farmer,25000-50000,Self Employed,6,Pucca House,Hindu,OBC
+84,35,Female,Gujarat,Bhavnagar,Rural,Higher Secondary,Dairy Worker,15000-25000,Self Employed,5,Semi-Pucca House,Hindu,OBC
+85,48,Male,West Bengal,Nadia,Rural,Primary,Jute Farmer,15000-25000,Self Employed,6,Semi-Pucca House,Hindu,SC
+86,32,Female,Rajasthan,Bharatpur,Rural,Higher Secondary,ASHA Worker,15000-25000,Employed,4,Pucca House,Hindu,OBC
+87,56,Male,Uttar Pradesh,Gorakhpur,Rural,Primary,Agricultural Laborer,15000-25000,Employed,8,Kutcha House,Hindu,OBC
+88,39,Female,Punjab,Bathinda,Rural,Graduate,Government Teacher,50000-75000,Employed,4,Pucca House,Sikh,General
+89,43,Male,Haryana,Karnal,Rural,Higher Secondary,Wheat Farmer,50000-75000,Self Employed,5,Pucca House,Hindu,General
+90,30,Female,Madhya Pradesh,Ratlam,Rural,Graduate,Bank Officer,50000-75000,Employed,3,Pucca House,Hindu,General
+91,59,Male,Odisha,Balasore,Rural,Primary,Fisherman,15000-25000,Self Employed,7,Semi-Pucca House,Hindu,OBC
+92,36,Female,Kerala,Wayanad,Rural,Higher Secondary,Spice Farmer,25000-50000,Self Employed,5,Pucca House,Hindu,ST
+93,44,Male,Andhra Pradesh,Chittoor,Rural,Higher Secondary,Mango Farmer,25000-50000,Self Employed,6,Pucca House,Hindu,OBC
+94,38,Female,Telangana,Nalgonda,Rural,Primary,Cotton Farmer,15000-25000,Self Employed,5,Semi-Pucca House,Hindu,OBC
+95,50,Male,Bihar,Darbhanga,Rural,Primary,Agricultural Laborer,15000-25000,Employed,7,Kutcha House,Hindu,SC
+96,33,Female,Jharkhand,Hazaribagh,Rural,Higher Secondary,Government Employee,25000-50000,Employed,4,Pucca House,Hindu,ST
+97,46,Male,Assam,Golaghat,Rural,Higher Secondary,Tea Garden Supervisor,25000-50000,Employed,5,Pucca House,Hindu,OBC
+98,41,Female,Tripura,Gomati,Rural,Primary,Rubber Tapper,15000-25000,Self Employed,6,Semi-Pucca House,Hindu,General
+99,52,Male,Manipur,Churachandpur,Rural,Higher Secondary,Government Clerk,25000-50000,Employed,5,Pucca House,Christian,ST
+100,34,Female,Nagaland,Mokokchung,Rural,Graduate,School Principal,50000-75000,Employed,4,Pucca House,Christian,ST
