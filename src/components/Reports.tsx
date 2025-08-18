@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useDataContext } from '../context/DataContext';
 import { FileText, Download, Eye, Calendar, CheckCircle } from 'lucide-react';
+import { ReportPreview } from './reports/ReportPreview';
+import { generateReportContent } from '../utils/reportGenerator';
 
 export const Reports: React.FC = () => {
   const { originalData, processedData, riskMetrics } = useDataContext();
   const [selectedReport, setSelectedReport] = useState<string | null>(null);
+  const [previewReport, setPreviewReport] = useState<string | null>(null);
+  const [reportContent, setReportContent] = useState<string>('');
 
   const reports = [
     {
@@ -63,14 +67,76 @@ export const Reports: React.FC = () => {
     },
   ];
 
-  const generateReport = (reportId: string) => {
-    console.log(`Generating report: ${reportId}`);
-    // Simulate report generation
+  const generateReport = async (reportId: string) => {
+    const report = reports.find(r => r.id === reportId);
+    if (!report) return;
+
+    const content = await generateReportContent(reportId, {
+      originalData,
+      processedData,
+      riskMetrics,
+      reportTitle: report.title
+    });
+    
+    setReportContent(content);
+    setPreviewReport(reportId);
   };
 
-  const downloadReport = (reportId: string, format: 'pdf' | 'html' | 'csv') => {
-    console.log(`Downloading report: ${reportId} in ${format} format`);
-    // Simulate download
+  const downloadReport = async (reportId: string, format: 'pdf' | 'html' | 'csv') => {
+    const report = reports.find(r => r.id === reportId);
+    if (!report) return;
+
+    let content: string;
+    let mimeType: string;
+    let filename: string;
+
+    if (format === 'html') {
+      content = await generateReportContent(reportId, {
+        originalData,
+        processedData,
+        riskMetrics,
+        reportTitle: report.title
+      });
+      mimeType = 'text/html';
+      filename = `${reportId}_report.html`;
+    } else if (format === 'csv' && reportId === 'audit-trail') {
+      content = generateAuditTrailCSV();
+      mimeType = 'text/csv';
+      filename = `${reportId}_report.csv`;
+    } else {
+      // For PDF, we'll generate HTML and let user print to PDF
+      content = await generateReportContent(reportId, {
+        originalData,
+        processedData,
+        riskMetrics,
+        reportTitle: report.title
+      });
+      mimeType = 'text/html';
+      filename = `${reportId}_report.html`;
+    }
+
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const generateAuditTrailCSV = () => {
+    const headers = ['Timestamp', 'Action', 'Module', 'Parameters', 'User', 'Status'];
+    const rows = [
+      ['2024-01-15 14:30:00', 'Dataset Upload', 'File Management', 'household_survey_2024.csv', 'NSO User', 'Success'],
+      ['2024-01-15 14:31:15', 'Risk Assessment', 'Risk Analysis', 'QI: Age,District,Education,Occupation', 'NSO User', 'Completed'],
+      ['2024-01-15 14:35:22', 'Privacy Enhancement', 'SDC Module', 'Suppression: 5, Generalization: 2', 'NSO User', 'Success'],
+      ['2024-01-15 14:38:45', 'Utility Measurement', 'Analysis', 'Statistical Comparison', 'NSO User', 'Completed'],
+      ['2024-01-15 14:40:12', 'Report Generation', 'Reporting', 'Executive Summary', 'NSO User', 'Generated'],
+    ];
+    
+    return [headers, ...rows].map(row => row.join(',')).join('\n');
   };
 
   if (!originalData) {
@@ -168,7 +234,7 @@ export const Reports: React.FC = () => {
                   className="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors duration-200 flex items-center space-x-2"
                 >
                   <Download className="h-4 w-4" />
-                  <span>PDF</span>
+                  <span>HTML (Print to PDF)</span>
                 </button>
                 
                 <button
@@ -191,6 +257,18 @@ export const Reports: React.FC = () => {
               </div>
             </div>
           </div>
+        )}
+
+        {/* Report Preview Modal */}
+        {previewReport && (
+          <ReportPreview
+            reportId={previewReport}
+            content={reportContent}
+            onClose={() => {
+              setPreviewReport(null);
+              setReportContent('');
+            }}
+          />
         )}
 
         {/* DPDP Compliance Summary */}
