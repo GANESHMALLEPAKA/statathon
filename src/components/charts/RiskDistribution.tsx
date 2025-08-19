@@ -1,13 +1,15 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
-const data = [
-  { name: 'Low Risk (0-30%)', value: 32400, color: '#059669' },
-  { name: 'Medium Risk (30-60%)', value: 16353, color: '#D97706' },
-  { name: 'High Risk (60-100%)', value: 1247, color: '#DC2626' }
-];
+interface RiskDistributionProps {
+  analysisResults?: any;
+}
 
-export const RiskDistribution: React.FC = () => {
+export const RiskDistribution: React.FC<RiskDistributionProps> = ({ analysisResults }) => {
+  const data = analysisResults?.riskDistribution || [
+    { name: 'No Data Available', value: 1, color: '#9CA3AF' }
+  ];
+
   return (
     <div className="bg-white p-6 rounded-lg border border-gray-200">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Risk Distribution</h3>

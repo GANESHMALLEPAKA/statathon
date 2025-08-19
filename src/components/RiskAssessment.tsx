@@ -3,20 +3,26 @@ import { useDataContext } from '../context/DataContext';
 import { AlertTriangle, Shield, Users, Eye, MapPin } from 'lucide-react';
 import { RiskHeatmap } from './charts/RiskHeatmap';
 import { RiskDistribution } from './charts/RiskDistribution';
+import { calculateRiskMetrics, analyzeQuasiIdentifiers } from '../utils/riskAnalysis';
 
 export const RiskAssessment: React.FC = () => {
   const { originalData, setRiskMetrics } = useDataContext();
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [selectedQuasiIdentifiers, setSelectedQuasiIdentifiers] = useState<string[]>([]);
+  const [potentialQIs, setPotentialQIs] = useState<any[]>([]);
+  const [analysisResults, setAnalysisResults] = useState<any>(null);
 
-  const potentialQIs = [
-    { field: 'Age', risk: 'High', description: 'Specific age values increase re-identification risk' },
-    { field: 'Gender', risk: 'Low', description: 'Binary classification with low uniqueness' },
-    { field: 'District', risk: 'Medium', description: 'Geographic identifier with moderate risk' },
-    { field: 'Education', risk: 'Medium', description: 'Educational categories may create unique combinations' },
-    { field: 'Occupation', risk: 'High', description: 'Specific occupations can be highly identifying' },
-    { field: 'Income_Bracket', risk: 'Medium', description: 'Income ranges provide moderate identification' },
-  ];
+  useEffect(() => {
+    if (originalData) {
+      const qiAnalysis = analyzeQuasiIdentifiers(originalData);
+      setPotentialQIs(qiAnalysis);
+      // Auto-select high and medium risk QIs
+      const autoSelected = qiAnalysis
+        .filter(qi => qi.risk === 'High' || qi.risk === 'Medium')
+        .map(qi => qi.field);
+      setSelectedQuasiIdentifiers(autoSelected);
+    }
+  }, [originalData]);
 
   useEffect(() => {
     if (originalData && selectedQuasiIdentifiers.length > 0) {
@@ -28,17 +34,13 @@ export const RiskAssessment: React.FC = () => {
     setIsAnalyzing(true);
     
     // Simulate analysis
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 1500));
     
-    const mockMetrics = {
-      overallRisk: 0.68,
-      highRiskRecords: 1247,
-      uniqueRecords: 892,
-      kAnonymity: 3.2,
-      vulnerableFields: selectedQuasiIdentifiers
-    };
+    // Calculate actual risk metrics based on the dataset
+    const riskMetrics = calculateRiskMetrics(originalData!, selectedQuasiIdentifiers);
+    setAnalysisResults(riskMetrics);
     
-    setRiskMetrics(mockMetrics);
+    setRiskMetrics(riskMetrics);
     setIsAnalyzing(false);
   };
 
@@ -115,7 +117,9 @@ export const RiskAssessment: React.FC = () => {
                       <AlertTriangle className="h-8 w-8 text-red-600 mr-3" />
                       <div>
                         <p className="text-sm font-medium text-red-800">Overall Risk</p>
-                        <p className="text-2xl font-bold text-red-900">68%</p>
+                        <p className="text-2xl font-bold text-red-900">
+                          {analysisResults ? (analysisResults.overallRisk * 100).toFixed(1) : '0.0'}%
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -125,7 +129,9 @@ export const RiskAssessment: React.FC = () => {
                       <Eye className="h-8 w-8 text-amber-600 mr-3" />
                       <div>
                         <p className="text-sm font-medium text-amber-800">High Risk Records</p>
-                        <p className="text-2xl font-bold text-amber-900">1,247</p>
+                        <p className="text-2xl font-bold text-amber-900">
+                          {analysisResults?.highRiskRecords?.toLocaleString() || '0'}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -135,7 +141,9 @@ export const RiskAssessment: React.FC = () => {
                       <Users className="h-8 w-8 text-blue-600 mr-3" />
                       <div>
                         <p className="text-sm font-medium text-blue-800">K-Anonymity</p>
-                        <p className="text-2xl font-bold text-blue-900">3.2</p>
+                        <p className="text-2xl font-bold text-blue-900">
+                          {analysisResults?.kAnonymity?.toFixed(1) || '0.0'}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -145,7 +153,9 @@ export const RiskAssessment: React.FC = () => {
                       <MapPin className="h-8 w-8 text-purple-600 mr-3" />
                       <div>
                         <p className="text-sm font-medium text-purple-800">Unique Records</p>
-                        <p className="text-2xl font-bold text-purple-900">892</p>
+                        <p className="text-2xl font-bold text-purple-900">
+                          {analysisResults?.uniqueRecords?.toLocaleString() || '0'}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -153,19 +163,20 @@ export const RiskAssessment: React.FC = () => {
 
                 {/* Risk Visualizations */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <RiskHeatmap />
-                  <RiskDistribution />
+                  <RiskHeatmap analysisResults={analysisResults} />
+                  <RiskDistribution analysisResults={analysisResults} />
                 </div>
 
-                {/* Recommendations */}
+                {/* Dynamic Recommendations */}
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
                   <h3 className="text-lg font-semibold text-yellow-900 mb-4">Risk Mitigation Recommendations</h3>
-                  <ul className="space-y-2 text-yellow-800">
-                    <li>• Apply generalization to Age field (group into 5-year ranges)</li>
-                    <li>• Consider suppression of records with unique Occupation values</li>
-                    <li>• Implement geographic generalization for District field</li>
-                    <li>• Add differential privacy noise to Income_Bracket distributions</li>
-                  </ul>
+                  {analysisResults && (
+                    <ul className="space-y-2 text-yellow-800">
+                      {analysisResults.recommendations.map((rec: string, index: number) => (
+                        <li key={index}>• {rec}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </>
             )}

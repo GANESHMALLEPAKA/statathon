@@ -5,36 +5,39 @@ import { Shield, Users, AlertTriangle, CheckCircle } from 'lucide-react';
 export const MetricsOverview: React.FC = () => {
   const { originalData, riskMetrics, processedData } = useDataContext();
 
-  const mockRiskMetrics = riskMetrics || {
-    overallRisk: 0.68,
-    highRiskRecords: 1247,
-    uniqueRecords: 892,
-    kAnonymity: 3.2,
-    vulnerableFields: ['Age', 'District', 'Education']
+  // Use actual risk metrics or show placeholder
+  const displayMetrics = riskMetrics || {
+    overallRisk: 0,
+    highRiskRecords: 0,
+    uniqueRecords: 0,
+    kAnonymity: 0,
+    vulnerableFields: []
   };
 
   const metrics = [
     {
       title: 'Overall Privacy Risk',
-      value: `${(mockRiskMetrics.overallRisk * 100).toFixed(1)}%`,
+      value: riskMetrics ? `${(displayMetrics.overallRisk * 100).toFixed(1)}%` : 'Not Analyzed',
       icon: Shield,
-      color: mockRiskMetrics.overallRisk > 0.5 ? 'text-red-600 bg-red-100' : 'text-green-600 bg-green-100',
+      color: !riskMetrics ? 'text-gray-600 bg-gray-100' : 
+             displayMetrics.overallRisk > 0.5 ? 'text-red-600 bg-red-100' : 'text-green-600 bg-green-100',
       change: processedData ? '-23.4%' : null,
       changeColor: 'text-green-600'
     },
     {
       title: 'High Risk Records',
-      value: mockRiskMetrics.highRiskRecords.toLocaleString(),
+      value: riskMetrics ? displayMetrics.highRiskRecords.toLocaleString() : 'Not Analyzed',
       icon: AlertTriangle,
-      color: 'text-amber-600 bg-amber-100',
+      color: !riskMetrics ? 'text-gray-600 bg-gray-100' : 'text-amber-600 bg-amber-100',
       change: processedData ? '-67.8%' : null,
       changeColor: 'text-green-600'
     },
     {
       title: 'K-Anonymity Score',
-      value: mockRiskMetrics.kAnonymity.toFixed(1),
+      value: riskMetrics ? displayMetrics.kAnonymity.toFixed(1) : 'Not Analyzed',
       icon: Users,
-      color: mockRiskMetrics.kAnonymity >= 5 ? 'text-green-600 bg-green-100' : 'text-orange-600 bg-orange-100',
+      color: !riskMetrics ? 'text-gray-600 bg-gray-100' :
+             displayMetrics.kAnonymity >= 5 ? 'text-green-600 bg-green-100' : 'text-orange-600 bg-orange-100',
       change: processedData ? '+156%' : null,
       changeColor: 'text-green-600'
     },
