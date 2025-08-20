@@ -26,23 +26,47 @@ export const RiskAssessment: React.FC = () => {
 
   useEffect(() => {
     if (originalData && selectedQuasiIdentifiers.length > 0) {
-      runRiskAnalysis();
+      const timeoutId = setTimeout(() => {
+        runRiskAnalysis();
+      }, 500); // Debounce to prevent too many calculations
+      
+      return () => clearTimeout(timeoutId);
     }
   }, [selectedQuasiIdentifiers, originalData]);
 
   const runRiskAnalysis = async () => {
+    if (!originalData || selectedQuasiIdentifiers.length === 0) return;
+    
     setIsAnalyzing(true);
     
-    // Simulate analysis
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Calculate actual risk metrics based on the dataset
-    const riskMetrics = calculateRiskMetrics(originalData!, selectedQuasiIdentifiers);
-    setAnalysisResults(riskMetrics);
-    
-    setRiskMetrics(riskMetrics);
-    setIsAnalyzing(false);
+    try {
+      // Simulate analysis time for better UX
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Calculate actual risk metrics based on the dataset
+      const riskMetrics = calculateRiskMetrics(originalData, selectedQuasiIdentifiers);
+      setAnalysisResults(riskMetrics);
+      setRiskMetrics(riskMetrics);
+    } catch (error) {
+      console.error('Risk analysis error:', error);
+      // Set default values on error
+      const defaultMetrics = {
+        overallRisk: 0,
+        highRiskRecords: 0,
+        uniqueRecords: 0,
+        kAnonymity: 0,
+        vulnerableFields: selectedQuasiIdentifiers,
+        recommendations: ['Error in analysis. Please try again.'],
+        geographicRisk: [],
+        riskDistribution: []
+      };
+      setAnalysisResults(defaultMetrics);
+      setRiskMetrics(defaultMetrics);
+    } finally {
+      setIsAnalyzing(false);
+    }
   };
+    
 
   const toggleQuasiIdentifier = (field: string) => {
     setSelectedQuasiIdentifiers(prev =>
